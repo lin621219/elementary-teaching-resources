@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>國小教師教學資源網站</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans TC',sans-serif;background:#f5f7f5;color:#222;min-height:100vh}
+.container{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
+.hero{background:linear-gradient(135deg,#1D9E75 0%,#0F6E56 50%,#085041 100%);padding:2.5rem 2rem 2rem;text-align:center;border-radius:16px;margin-bottom:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;left:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.08);animation:float1 6s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.06);animation:float2 8s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(14px)}}
+.hero-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:.5rem}
+.hero-sub{font-size:15px;color:rgba(255,255,255,0.85)}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:1.2rem}
+.badge{background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:12px;padding:4px 14px;border-radius:20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem}
+.stat{background:#fff;border-radius:10px;padding:.9rem 1rem;text-align:center;border:0.5px solid #e0e0e0}
+.stat-num{font-size:24px;font-weight:700;color:#1D9E75}
+.stat-label{font-size:12px;color:#888;margin-top:2px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem}
+.tab{padding:7px 18px;border:1px solid #ddd;border-radius:20px;font-size:13px;cursor:pointer;background:#fff;color:#555;transition:all .2s}
+.tab:hover{background:#f0f0f0}
+.tab.active{background:#1D9E75;color:#fff;border-color:#1D9E75}
+.section{display:none}
+.section.active{display:block;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem}
+.section-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.section-title{font-size:17px;font-weight:600;color:#222}
+.section-desc{font-size:13px;color:#888}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.card{background:#fff;border:0.5px solid #e0e0e0;border-radius:14px;padding:1rem;transition:transform .2s,box-shadow .2s;cursor:pointer;text-decoration:none;display:block;color:inherit}
+.card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.08);border-color:#bbb}
+.card-top{display:flex;align-items:center;gap:10px;margin-bottom:.6rem}
+.card-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.card-name{font-size:14px;font-weight:600;color:#222;line-height:1.3}
+.card-type{font-size:11px;padding:2px 8px;border-radius:10px;display:inline-block;margin-top:2px}
+.type-web{background:#EAF3DE;color:#27500A}
+.type-app{background:#E6F1FB;color:#0C447C}
+.type-both{background:#EEEDFE;color:#3C3489}
+.type-gov{background:#FAEEDA;color:#633806}
+.card-desc{font-size:12px;color:#666;line-height:1.65;margin-bottom:.8rem}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11px;padding:2px 7px;border-radius:8px;background:#f0f0f0;color:#777}
+.tip{background:#E1F5EE;border-left:3px solid #1D9E75;padding:.8rem 1rem;border-radius:0 10px 10px 0;font-size:13px;color:#085041;margin-bottom:1.5rem}
+footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:#aaa}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="hero-title"><i class="ti ti-school" style="font-size:30px;display:block;margin-bottom:.4rem"></i>國小教師教學資源網站</div>
+  <div class="hero-sub">精選各領域優質教學平台、網站與 APP，讓教學更有趣！</div>
+  <div class="hero-badges">
+    <span class="badge">📖 教學網站</span>
+    <span class="badge">📱 教學 APP</span>
+    <span class="badge">🏛️ 官方平台</span>
+    <span class="badge">⭐ 免費資源</span>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num" id="s1">0</div><div class="stat-label">教學平台</div></div>
+  <div class="stat"><div class="stat-num" id="s2">0</div><div class="stat-label">教學領域</div></div>
+  <div class="stat"><div class="stat-num" id="s3">0</div><div class="stat-label">免費資源</div></div>
+  <div class="stat"><div class="stat-num" id="s4">0</div><div class="stat-label">官方網站</div></div>
+</div>
+
+<div class="tabs" id="tabbar">
+  <div class="tab active" data-sec="all">全部資源</div>
+  <div class="tab" data-sec="language">語文領域</div>
+  <div class="tab" data-sec="math">數學領域</div>
+  <div class="tab" data-sec="science">自然科學</div>
+  <div class="tab" data-sec="social">社會領域</div>
+  <div class="tab" data-sec="english">英語領域</div>
+  <div class="tab" data-sec="art">藝術人文</div>
+  <div class="tab" data-sec="tools">課堂工具</div>
+  <div class="tab" data-sec="gov">官方平台</div>
+</div>
+
+<div class="section active" id="sec-all">
+  <div class="tip">💡 點選上方分類標籤可快速篩選，點選卡片可前往資源網站。</div>
+  <div class="cards" id="all-cards"></div>
+</div>
+<div class="section" id="sec-language">
+  <div class="section-header">
+    <div class="section-icon" style="background:#EAF3DE">✏️</div>
+    <div><div class="section-title">語文領域</div><div class="section-desc">中文閱讀、寫作、注音與語言學習資源</div></div>
+  </div>
+  <div class="cards" id="lang-cards"></div>
+</div>
+<div class="section" id="sec-math">
+  <div class="section-header">
+    <div class="section-icon" style="background:#E6F1FB">🔢</div>
+    <div><div class="section-title">數學領域</div><div class="section-desc">數學概念、解題練習與遊戲化學習工具</div></div>
+  </div>
+  <div class="cards" id="math-cards"></div>
+</div>
+<div class="section" id="sec-science">
+  <div class="section-header">
+    <div class="section-icon" style="background:#FAEEDA">🔬</div>
+    <div><div class="section-title">自然科學</div><div class="section-desc">科學實驗、自然觀察與 STEAM 學習資源</div></div>
+  </div>
+  <div class="cards" id="sci-cards"></div>
+</div>
+<div class="section" id="sec-social">
+  <div class="section-header">
+    <div class="section-icon" style="background:#FAECE7">🗺️</div>
+    <div><div class="section-title">社會領域</div><div class="section-desc">歷史、地理、公民與社會探索學習</div></div>
+  </div>
+  <div class="cards" id="soc-cards"></div>
+</div>
+<div class="section" id="sec-english">
+  <div class="section-header">
+    <div class="section-icon" style="background:#EEEDFE">🇬🇧</div>
+    <div><div class="section-title">英語領域</div><div class="section-desc">英語聽說讀寫、發音練習與互動學習</div></div>
+  </div>
+  <div class="cards" id="eng-cards"></div>
+</div>
+<div class="section" id="sec-art">
+  <div class="section-header">
+    <div class="section-icon" style="background:#FBEAF0">🎨</div>
+    <div><div class="section-title">藝術人文</div><div class="section-desc">音樂、美術、表演藝術與創意學習</div></div>
+  </div>
+  <div class="cards" id="art-cards"></div>
+</div>
+<div class="section" id="sec-tools">
+  <div class="section-header">
+    <div class="section-icon" style="background:#E1F5EE">🛠️</div>
+    <div><div class="section-title">課堂互動工具</div><div class="section-desc">課堂管理、互動問答、作業與協作工具</div></div>
+  </div>
+  <div class="cards" id="tool-cards"></div>
+</div>
+<div class="section" id="sec-gov">
+  <div class="section-header">
+    <div class="section-icon" style="background:#FAEEDA">🏛️</div>
+    <div><div class="section-title">官方教育平台</div><div class="section-desc">教育部及政府機構提供的官方教學資源</div></div>
+  </div>
+  <div class="cards" id="gov-cards"></div>
+</div>
+
+<footer>© 2024 國小教師教學資源網站 · 資料來源：教育部、翻轉教育、ClassPoint</footer>
+</div>
+
+<script>
+const resources = [
+  {name:'均一教育平台',url:'https://www.junyiacademy.org/',type:'web',icon:'🎓',color:'#EAF3DE',desc:'全免費，涵蓋國小到高中各科，符合108課綱，提供學習影片與習題。',tags:['免費','語文','數學','自然','社會'],cats:['language','math','science','social','gov']},
+  {name:'康軒 YOURCLASS',url:'https://www.yourclass.com.tw/',type:'web',icon:'📚',color:'#E6F1FB',desc:'國小至國中全科線上課程，含短影音、題庫與講義，支援多版本。',tags:['語文','數學','英語','社會'],cats:['language','math','english','social']},
+  {name:'小學王',url:'https://www.go100.com.tw/',type:'web',icon:'👑',color:'#FAEEDA',desc:'情境動畫教學，將數學、語文、自然融入故事與戲劇，激發學習動機。',tags:['動畫','語文','數學','自然'],cats:['language','math','science']},
+  {name:'PaGamO',url:'https://www.pagamo.org/',type:'both',icon:'🎮',color:'#EEEDFE',desc:'遊戲化學習平台，涵蓋各版本國小教科書各科目題庫，學生搶答超好玩。',tags:['遊戲化','全科','競賽'],cats:['language','math','science','social','english']},
+  {name:'PRIORI 學習扶助平台',url:'https://priori.moe.gov.tw/',type:'gov',icon:'🏫',color:'#FAEEDA',desc:'教育部官方平台，提供國語文、數學、英語文教材與影片。',tags:['官方','免費','扶助教學'],cats:['language','math','english','gov']},
+  {name:'酷課雲',url:'https://cool.sayit.cc/',type:'gov',icon:'☁️',color:'#E6F1FB',desc:'臺北市官方學習平台，提供多科影片、素材與互動教材。',tags:['官方','影片','全科'],cats:['language','math','science','social','english','gov']},
+  {name:'因材網',url:'https://adl.edu.tw/',type:'gov',icon:'🌱',color:'#EAF3DE',desc:'教育部建置的自適應學習平台，依照學生程度提供個人化題目。',tags:['官方','自適應','個人化'],cats:['language','math','gov']},
+  {name:'CIRN 課程教學資源平台',url:'https://cirn.moe.edu.tw/',type:'gov',icon:'📋',color:'#FAEEDA',desc:'國民中小學課程教學資源整合，提供教師備課素材與課綱說明。',tags:['官方','108課綱','教師備課'],cats:['language','math','science','social','english','art','gov']},
+  {name:'Cool English 酷英',url:'https://www.coolenglish.edu.tw/',type:'gov',icon:'🇬🇧',color:'#EEEDFE',desc:'教育部官方英語學習網站，提供聽力、閱讀、字彙練習，適合3-6年級。',tags:['官方','免費','英語'],cats:['english','gov']},
+  {name:'Kahoot!',url:'https://kahoot.com/',type:'both',icon:'❓',color:'#FAEEDA',desc:'知名遊戲問答平台，老師出題學生搶答，課堂氣氛超HIGH！',tags:['問答遊戲','課堂互動','免費'],cats:['tools']},
+  {name:'Padlet',url:'https://padlet.com/',type:'both',icon:'📌',color:'#E6F1FB',desc:'數位白板工具，學生共同協作、展示作品，適合討論與腦力激盪。',tags:['協作','白板','討論'],cats:['tools']},
+  {name:'Wordwall',url:'https://wordwall.net/',type:'web',icon:'🔤',color:'#EAF3DE',desc:'可快速製作互動遊戲題目，版型豐富，適合語文、英語複習。',tags:['遊戲化','語文','英語'],cats:['tools','language','english']},
+  {name:'ClassDojo',url:'https://www.classdojo.com/',type:'both',icon:'⭐',color:'#FBEAF0',desc:'班級管理與家校溝通APP，積點獎勵系統增強學生學習動機。',tags:['班級管理','家長溝通','獎勵'],cats:['tools']},
+  {name:'Canva 教育版',url:'https://www.canva.com/education/',type:'both',icon:'🎨',color:'#FBEAF0',desc:'免費設計工具，老師製作精美教材、學生創作作品，適合各科融入。',tags:['設計','免費','創作'],cats:['tools','art']},
+  {name:'Blooket',url:'https://www.blooket.com/',type:'web',icon:'🃏',color:'#EEEDFE',desc:'把題目套進可愛遊戲版型，學生玩遊戲同時複習知識。',tags:['遊戲化','問答','複習'],cats:['tools']},
+  {name:'Seesaw',url:'https://web.seesaw.me/',type:'both',icon:'📓',color:'#E1F5EE',desc:'數位學習歷程APP，學生記錄作品分享給家長，適合低年級。',tags:['學習歷程','家長溝通','作品集'],cats:['tools']},
+  {name:'ClassPoint',url:'https://www.classpoint.io/',type:'both',icon:'🖥️',color:'#E6F1FB',desc:'整合PowerPoint的互動教學工具，課堂問答、舉手、小考一鍵完成。',tags:['課堂互動','PowerPoint','問答'],cats:['tools']},
+  {name:'Prodigy Math',url:'https://www.prodigygame.com/',type:'both',icon:'🧮',color:'#EAF3DE',desc:'RPG遊戲化數學學習，學生在冒險中練習數學，免費、高黏著度。',tags:['遊戲化','數學','免費'],cats:['math']},
+  {name:'KooBits Math',url:'https://www.koobits.com/',type:'web',icon:'🔢',color:'#E6F1FB',desc:'提供豐富數學教學資源與學生分析報告，可即時追蹤學習狀況。',tags:['數學','分析','教師後台'],cats:['math']},
+  {name:'Book Creator',url:'https://bookcreator.com/',type:'both',icon:'📖',color:'#FAEEDA',desc:'讓學生和老師設計互動式電子書，支援文字、圖片、聲音和影片。',tags:['電子書','創作','語文'],cats:['language','art','tools']},
+  {name:'Popplet',url:'https://popplet.com/',type:'both',icon:'🗺️',color:'#FBEAF0',desc:'直覺心智圖工具，學生整理課程架構，有助理解文本建立知識結構。',tags:['心智圖','閱讀理解','協作'],cats:['tools','language']},
+  {name:'Google Arts & Culture',url:'https://artsandculture.google.com/',type:'web',icon:'🎭',color:'#FBEAF0',desc:'Google提供全球藝術館、博物館線上導覽，豐富藝術人文課程。',tags:['藝術','免費','博物館'],cats:['art']},
+  {name:'Chrome Music Lab',url:'https://musiclab.chromeexperiments.com/',type:'web',icon:'🎵',color:'#FBEAF0',desc:'Google互動音樂實驗室，學生探索音符、節奏、和弦，適合音樂課。',tags:['音樂','免費','互動'],cats:['art']},
+  {name:'MangoSTEEMs',url:'https://www.mangosteems.com.tw/',type:'web',icon:'🔬',color:'#FAEEDA',desc:'STEAM教育平台，提供跨領域科學實驗與專題課程素材。',tags:['STEAM','實驗','跨領域'],cats:['science']},
+  {name:'e-Peer 共學平台',url:'https://info.e-peer.tw/',type:'web',icon:'🤝',color:'#EAF3DE',desc:'入選教育部校園數位內容名單，提供共學協作與自主學習資源。',tags:['共學','自主學習','數位內容'],cats:['tools','gov']},
+];
+
+function cardHTML(r){
+  const typeLabel={web:'網站',app:'APP',both:'網站+APP',gov:'官方'}[r.type]||'網站';
+  const typeClass={web:'type-web',app:'type-app',both:'type-both',gov:'type-gov'}[r.type]||'type-web';
+  return `<a class="card" href="${r.url}" target="_blank" rel="noopener">
+    <div class="card-top">
+      <div class="card-icon" style="background:${r.color}">${r.icon}</div>
+      <div style="flex:1;min-width:0">
+        <div class="card-name">${r.name}</div>
+        <span class="card-type ${typeClass}">${typeLabel}</span>
+      </div>
+    </div>
+    <div class="card-desc">${r.desc}</div>
+    <div class="card-tags">${r.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+  </a>`;
+}
+
+function renderCards(id,items){
+  const el=document.getElementById(id);
+  if(el)el.innerHTML=items.map(cardHTML).join('');
+}
+
+renderCards('all-cards',resources);
+renderCards('lang-cards',resources.filter(r=>r.cats.includes('language')));
+renderCards('math-cards',resources.filter(r=>r.cats.includes('math')));
+renderCards('sci-cards',resources.filter(r=>r.cats.includes('science')));
+renderCards('soc-cards',resources.filter(r=>r.cats.includes('social')));
+renderCards('eng-cards',resources.filter(r=>r.cats.includes('english')));
+renderCards('art-cards',resources.filter(r=>r.cats.includes('art')));
+renderCards('tool-cards',resources.filter(r=>r.cats.includes('tools')));
+renderCards('gov-cards',resources.filter(r=>r.cats.includes('gov')));
+
+document.getElementById('tabbar').addEventListener('click',e=>{
+  const tab=e.target.closest('.tab');
+  if(!tab)return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
+  const sec=tab.dataset.sec;
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+sec).classList.add('active');
+});
+
+function animateNum(id,target,duration){
+  const el=document.getElementById(id);
+  if(!el)return;
+  let start=0;const step=Math.ceil(target/30);
+  const t=setInterval(()=>{
+    start=Math.min(start+step,target);
+    el.textContent=start;
+    if(start>=target)clearInterval(t);
+  },duration/30);
+}
+setTimeout(()=>{
+  animateNum('s1',resources.length,800);
+  animateNum('s2',8,600);
+  animateNum('s3',resources.filter(r=>r.tags.includes('免費')).length,700);
+  animateNum('s4',resources.filter(r=>r.cats.includes('gov')).length,600);
+},400);
+</script>
+</body>
+</html>

@@ -82,6 +82,7 @@ footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:#aaa}
   <div class="tab" data-sec="art">藝術人文</div>
   <div class="tab" data-sec="tools">課堂工具</div>
   <div class="tab" data-sec="gov">官方平台</div>
+  <div class="tab" data-sec="ai">AI 應用資源</div>
 </div>
 
 <div class="section active" id="sec-all">
@@ -144,6 +145,13 @@ footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:#aaa}
   </div>
   <div class="cards" id="gov-cards"></div>
 </div>
+<div class="section" id="sec-ai">
+  <div class="section-header">
+    <div class="section-icon" style="background:#EEEDFE">🤖</div>
+    <div><div class="section-title">AI 應用資源</div><div class="section-desc">人工智慧教學工具、AI 輔助學習與創意應用平台</div></div>
+  </div>
+  <div class="cards" id="ai-cards"></div>
+</div>
 
 <footer>© 2024 國小教師教學資源網站 · 資料來源：教育部、翻轉教育、ClassPoint</footer>
 </div>
@@ -173,6 +181,12 @@ const resources = [
   {name:'Chrome Music Lab',url:'https://musiclab.chromeexperiments.com/',type:'web',icon:'🎵',color:'#FBEAF0',desc:'Google互動音樂實驗室，學生探索音符、節奏、和弦，適合音樂課。',tags:['音樂','免費','互動'],cats:['art']},
   {name:'MangoSTEEMs',url:'https://www.mangosteems.com.tw/',type:'web',icon:'🔬',color:'#FAEEDA',desc:'STEAM教育平台，提供跨領域科學實驗與專題課程素材。',tags:['STEAM','實驗','跨領域'],cats:['science']},
   {name:'e-Peer 共學平台',url:'https://info.e-peer.tw/',type:'web',icon:'🤝',color:'#EAF3DE',desc:'入選教育部校園數位內容名單，提供共學協作與自主學習資源。',tags:['共學','自主學習','數位內容'],cats:['tools','gov']},
+  {name:'AI Kahoot 教學資源',url:'https://littleyi22.github.io/Kahoot/',type:'web',icon:'🤖',color:'#EEEDFE',desc:'結合 AI 概念的 Kahoot 教學應用，引導學生認識人工智慧基礎知識。',tags:['AI','Kahoot','免費'],cats:['ai']},
+  {name:'FunFun AI 學習網',url:'https://chunsheng612.github.io/FunFun.AI-Website/',type:'web',icon:'✨',color:'#EEEDFE',desc:'趣味 AI 學習網站，以互動方式讓國小學生體驗人工智慧的應用與樂趣。',tags:['AI','互動','免費'],cats:['ai']},
+  {name:'均一 AI 單元',url:'https://www.junyiacademy.org/topics/cs-ai',type:'web',icon:'🎓',color:'#EAF3DE',desc:'均一教育平台的人工智慧專區，將 AI 知識轉化為適合國小學生的學習內容。',tags:['AI','免費','影片'],cats:['ai']},
+  {name:'教育大市集 AI 教學示例',url:'https://market.cloud.edu.tw/list/ai.jsp',type:'gov',icon:'🏫',color:'#FAEEDA',desc:'教育部「和AI做朋友」中小學 AI 教學示範例，含多種跨領域教案。',tags:['官方','AI','教案'],cats:['ai','gov']},
+  {name:'AI4kids',url:'https://ai4kids.ai/',type:'web',icon:'🧒',color:'#EEEDFE',desc:'專為國小至高中設計的 AI 教育平台，提供人工智慧課程、線上學習與跨領域營隊。',tags:['AI','程式設計','課程'],cats:['ai']},
+  {name:'點亮程式 AI 資源專區',url:'https://lightupmaker.com/ai-education-resources/',type:'web',icon:'💡',color:'#FAEEDA',desc:'整理各種 AI 工具及實用教學資源，適合國小高年級教師備課參考。',tags:['AI','教師備課','資源整合'],cats:['ai']},
 ];
 
 function cardHTML(r){
@@ -205,6 +219,7 @@ renderCards('eng-cards',resources.filter(r=>r.cats.includes('english')));
 renderCards('art-cards',resources.filter(r=>r.cats.includes('art')));
 renderCards('tool-cards',resources.filter(r=>r.cats.includes('tools')));
 renderCards('gov-cards',resources.filter(r=>r.cats.includes('gov')));
+renderCards('ai-cards',resources.filter(r=>r.cats.includes('ai')));
 
 document.getElementById('tabbar').addEventListener('click',e=>{
   const tab=e.target.closest('.tab');
